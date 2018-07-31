@@ -10,4 +10,21 @@
 
 @implementation ScoreKeeping
 
+-(NSString*)outputScore{
+    int totalNumber = self.rightAnswersCount + self.wrongAnswersCount;
+    if (totalNumber == 0) {
+        return @"";
+    }
+    
+    float rightAnswersCountFloat = (float) self.rightAnswersCount;
+    float totalAnswerCount =(float)totalNumber;
+    
+    float percentage = ( rightAnswersCountFloat / totalAnswerCount) * 100.0;
+    
+    
+    NSString *scoreString = [NSString stringWithFormat:@"%d right %d wrong-------- %f",self.rightAnswersCount,self.wrongAnswersCount,percentage ];
+    return scoreString;
+    
+}
+
 @end

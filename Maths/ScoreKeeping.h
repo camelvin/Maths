@@ -9,5 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface ScoreKeeping : NSObject
+@property(nonatomic)int rightAnswersCount;
+@property(nonatomic)int wrongAnswersCount;
+-(NSString*)outputScore;
+
+
 
 @end

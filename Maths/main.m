@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "AdditionQuestion.h"
 #import "InputHandler.h"
+#import "ScoreKeeping.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // 255 unit long array of characters
        
         InputHandler *inputHandler = [[InputHandler alloc]init];
+        ScoreKeeping *scorekeeper =[[ScoreKeeping alloc]init];
         BOOL gameOn = YES;
         
        
@@ -23,11 +25,18 @@ int main(int argc, const char * argv[]) {
             // repeat forever
             AdditionQuestion *q1 =[[AdditionQuestion alloc]init];
             NSLog(@"%1ld + %1ld?",q1.leftNumber,q1.rightNumber);
-          
+            
             NSString *newstring = [inputHandler userInput];
-           
+            
             NSInteger userInput = [newstring integerValue];
             BOOL isCorrect = userInput == q1.answer;
+            if (isCorrect) {
+                scorekeeper.rightAnswersCount += 1;
+                
+            } else {
+                scorekeeper.wrongAnswersCount =+1;
+                
+            }
             if ([newstring isEqualToString:@"quit"]) {
                 gameOn = NO;
                 continue;
@@ -35,10 +44,13 @@ int main(int argc, const char * argv[]) {
             
             NSLog(@"%@", isCorrect ? @"Right" : @"Wrong");
             
+            NSString *finalPercentage = [scorekeeper outputScore];
+            NSLog(@"%@",finalPercentage);
             
-          
             
+            
+            
+        }
+        return 0;
     }
-    return 0;
-}
 }

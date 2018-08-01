@@ -1,5 +1,5 @@
 //
-//  AdditionQuestion.h
+//  MultipyQuestion.h
 //  Maths
 //
 //  Created by PHOENIXMAC on 2018-08-01.
@@ -8,6 +8,6 @@
 
 #import "CEQuestion.h"
 
-@interface AdditionQuestion : CEQuestion
+@interface MultipyQuestion : CEQuestion
 
 @end

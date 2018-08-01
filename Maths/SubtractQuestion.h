@@ -1,5 +1,5 @@
 //
-//  AdditionQuestion.h
+//  SubtractQuestion.h
 //  Maths
 //
 //  Created by PHOENIXMAC on 2018-08-01.
@@ -8,6 +8,8 @@
 
 #import "CEQuestion.h"
 
-@interface AdditionQuestion : CEQuestion
+@interface SubtractQuestion : CEQuestion
+
+
 
 @end

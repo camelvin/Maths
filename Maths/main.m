@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AdditionQuestion.h"
+#import "CEQuestion.h"
 #import "InputHandler.h"
 #import "ScoreKeeping.h"
+#import "QuestionManager.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -19,11 +20,14 @@ int main(int argc, const char * argv[]) {
         ScoreKeeping *scorekeeper =[[ScoreKeeping alloc]init];
         BOOL gameOn = YES;
         
-       
+        QuestionManager *qm = [[QuestionManager alloc]init];
         
         while (gameOn == YES) {
             // repeat forever
-            AdditionQuestion *q1 =[[AdditionQuestion alloc]init];
+            CEQuestion *q1 =[[CEQuestion alloc]init];
+            
+            //adding questions to array 
+            [qm.questions addObject:q1];
             NSLog(@"%1ld + %1ld?",q1.leftNumber,q1.rightNumber);
             
             NSString *newstring = [inputHandler userInput];
@@ -46,6 +50,11 @@ int main(int argc, const char * argv[]) {
             
             NSString *finalPercentage = [scorekeeper outputScore];
             NSLog(@"%@",finalPercentage);
+            double timedanswer = [q1 answerTime];
+           NSLog(@"%@",[qm timeOutput]);
+            NSLog(@"%f",timedanswer);
+            
+            
             
             
             
@@ -53,4 +62,5 @@ int main(int argc, const char * argv[]) {
         }
         return 0;
     }
-}
+        }
+
